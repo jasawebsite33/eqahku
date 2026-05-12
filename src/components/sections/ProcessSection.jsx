@@ -30,13 +30,13 @@ export default function ProcessSection() {
             <AnimatedDiv
               key={index}
               delay={index * 0.15}
-              className={`relative flex items-center gap-8 mb-20 last:mb-0 ${
+              className={`relative flex items-center gap-8 mb-12 md:mb-20 last:mb-0 ${
                 index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
               }`}
             >
-              {/* Image Side */}
+              {/* Image Side - Hidden on mobile */}
               <div
-                className={`flex-1 ml-16 md:ml-0 ${
+                className={`hidden md:block flex-1 ${
                   index % 2 === 0 ? 'md:pr-16' : 'md:pl-16'
                 }`}
               >
@@ -50,7 +50,7 @@ export default function ProcessSection() {
                     alt={step.title}
                     fill
                     className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 40vw"
+                    sizes="40vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/30 to-transparent" />
                 </motion.div>
@@ -58,7 +58,7 @@ export default function ProcessSection() {
 
               {/* Content Side */}
               <div
-                className={`flex-1 ml-16 md:ml-0 ${
+                className={`flex-1 ml-20 md:ml-0 ${
                   index % 2 === 0 ? 'md:pl-16 md:text-left' : 'md:pr-16 md:text-right'
                 }`}
               >
@@ -73,8 +73,8 @@ export default function ProcessSection() {
                 </p>
               </div>
 
-              {/* Timeline dot */}
-              <div className="absolute left-6 md:left-1/2 -translate-x-1/2 flex items-center justify-center top-1/2 -translate-y-1/2 hidden md:flex">
+              {/* Timeline dot - Desktop */}
+              <div className="absolute left-6 md:left-1/2 -translate-x-1/2 items-center justify-center top-1/2 -translate-y-1/2 hidden md:flex">
                 <motion.div
                   className="w-12 h-12 rounded-full bg-white border-2 border-gold-400 flex items-center justify-center shadow-soft z-10"
                   whileInView={{ scale: [0.5, 1.1, 1] }}
@@ -87,8 +87,8 @@ export default function ProcessSection() {
                 </motion.div>
               </div>
 
-              {/* Mobile dot */}
-              <div className="absolute left-6 -translate-x-1/2 top-8 md:hidden">
+              {/* Timeline dot - Mobile */}
+              <div className="absolute left-6 -translate-x-1/2 top-2 md:hidden">
                 <div className="w-12 h-12 rounded-full bg-white border-2 border-gold-400 flex items-center justify-center shadow-soft z-10">
                   <span className="text-body-sm font-serif font-bold text-gold-600">
                     {step.step}
