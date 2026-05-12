@@ -1,109 +1,68 @@
 'use client'
 
 import { useRef, useMemo } from 'react'
-import { useFrame, useThree } from '@react-three/fiber'
-import {
-  Environment,
-  ContactShadows,
-  Float,
-  MeshTransmissionMaterial,
-} from '@react-three/drei'
-import * as THREE from 'three'
+import { useFrame } from '@react-three/fiber'
+import { Environment, ContactShadows } from '@react-three/drei'
 import LambModel from './LambModel'
 
 export default function Scene() {
-  const groupRef = useRef()
-  const { viewport, pointer } = useThree()
-
-  // Subtle mouse follow rotation
-  useFrame((state, delta) => {
-    if (groupRef.current) {
-      // Smooth rotation following mouse
-      groupRef.current.rotation.y = THREE.MathUtils.lerp(
-        groupRef.current.rotation.y,
-        pointer.x * 0.15,
-        0.03
-      )
-      groupRef.current.rotation.x = THREE.MathUtils.lerp(
-        groupRef.current.rotation.x,
-        pointer.y * 0.05,
-        0.03
-      )
-    }
-  })
-
   return (
     <>
-      {/* Warm Soft Lighting Setup */}
-      <ambientLight intensity={0.4} color="#FDF9F3" />
+      <ambientLight intensity={0.6} color="#FDF9F3" />
 
-      {/* Key light - warm and soft */}
       <directionalLight
-        position={[5, 5, 5]}
-        intensity={1.2}
+        position={[5, 8, 5]}
+        intensity={1.5}
         color="#FFF3D4"
         castShadow
-        shadow-mapSize={1024}
+        shadow-mapSize={2048}
+        shadow-camera-left={-5}
+        shadow-camera-right={5}
+        shadow-camera-top={5}
+        shadow-camera-bottom={-5}
       />
 
-      {/* Fill light - subtle warm */}
       <directionalLight
-        position={[-3, 3, -2]}
-        intensity={0.4}
-        color="#E8DECE"
+        position={[-4, 3, 2]}
+        intensity={0.5}
+        color="#F5EADA"
       />
 
-      {/* Rim light - golden accent */}
       <pointLight
-        position={[-2, 2, -3]}
-        intensity={0.6}
+        position={[-3, 4, -3]}
+        intensity={0.7}
         color="#D4A520"
-        distance={10}
+        distance={12}
       />
 
-      {/* Bottom bounce light */}
       <pointLight
-        position={[0, -2, 2]}
-        intensity={0.2}
+        position={[0, -1, 4]}
+        intensity={0.3}
         color="#FAF3E6"
         distance={8}
       />
 
-      {/* Environment for reflections */}
-      <Environment preset="studio" environmentIntensity={0.3} />
+      <Environment preset="apartment" environmentIntensity={0.4} />
 
-      {/* Main 3D Model Group */}
-      <group ref={groupRef}>
-        <Float
-          speed={1.5}
-          rotationIntensity={0.1}
-          floatIntensity={0.3}
-          floatingRange={[-0.05, 0.05]}
-        >
-          <LambModel />
-        </Float>
-      </group>
+      <LambModel />
 
-      {/* Contact Shadow for grounding */}
       <ContactShadows
-        position={[0, -1.5, 0]}
-        opacity={0.15}
-        scale={10}
+        position={[-1.2, 0, 0]}     // ⬅️ Sesuaikan posisi shadow ke kaki domba
+        opacity={0.35}
+        scale={5}
         blur={2.5}
-        far={4}
+        far={3}
         color="#8B7355"
       />
 
-      {/* Decorative floating particles */}
       <FloatingParticles />
     </>
   )
 }
 
-// Subtle floating golden particles
 function FloatingParticles() {
-  const count = 30
   const meshRef = useRef()
+  const count = 35
 
   const particles = useMemo(() => {
     const positions = new Float32Array(count * 3)
@@ -118,7 +77,6 @@ function FloatingParticles() {
   useFrame((state) => {
     if (meshRef.current) {
       meshRef.current.rotation.y = state.clock.elapsedTime * 0.02
-      meshRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.01) * 0.1
     }
   })
 
@@ -133,10 +91,10 @@ function FloatingParticles() {
         />
       </bufferGeometry>
       <pointsMaterial
-        size={0.015}
+        size={0.012}
         color="#D4A520"
         transparent
-        opacity={0.4}
+        opacity={0.5}
         sizeAttenuation
       />
     </points>

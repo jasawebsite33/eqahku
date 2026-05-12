@@ -2,8 +2,9 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
-import SectionHeading from '@/components/ui/SectionHeading'
+import Image from 'next/image'
 import AnimatedDiv from '@/components/ui/AnimatedDiv'
+import { IMAGES } from '@/lib/constants'
 
 export default function AboutSection() {
   const sectionRef = useRef(null)
@@ -20,7 +21,6 @@ export default function AboutSection() {
       ref={sectionRef}
       className="section-padding bg-ivory-50 relative overflow-hidden"
     >
-      {/* Background decoration */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-beige-50/50 to-transparent" />
 
       <div className="container-wide relative">
@@ -28,45 +28,39 @@ export default function AboutSection() {
           {/* Image Side */}
           <AnimatedDiv direction="left" className="relative">
             <motion.div
-              className="relative aspect-[4/5] rounded-3xl overflow-hidden"
+              className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-elevated"
               style={{ y: imageY }}
             >
-              {/* Placeholder image with gradient */}
-              <div className="absolute inset-0 bg-gradient-to-br from-beige-200 via-ivory-200 to-beige-300">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-beige-300/50 flex items-center justify-center">
-                      <span className="text-4xl">🐑</span>
-                    </div>
-                    <p className="text-body-sm text-beige-500">
-                      Foto brand Eqahku
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Overlay gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/10 to-transparent" />
+              <Image
+                src={IMAGES.about}
+                alt="Eqahku premium aqiqah experience"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority
+              />
+              {/* Warm overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/20 via-transparent to-transparent" />
             </motion.div>
 
             {/* Floating accent card */}
             <motion.div
-              className="absolute -bottom-6 -right-6 lg:-right-10 bg-white rounded-2xl p-6 shadow-elevated max-w-[220px]"
+              className="absolute -bottom-6 -right-6 lg:-right-10 bg-white rounded-2xl p-6 shadow-elevated max-w-[220px] z-10"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5, duration: 0.6 }}
             >
-              <div className="text-display font-serif text-gold-600 font-bold">
+              <div className="text-display font-serif text-gold-600 font-bold leading-none">
                 500+
               </div>
-              <p className="text-body-sm text-charcoal-500 mt-1">
+              <p className="text-body-sm text-charcoal-500 mt-2">
                 Keluarga telah mempercayai kami
               </p>
             </motion.div>
 
             {/* Gold frame accent */}
-            <div className="absolute -top-4 -left-4 w-24 h-24 border-t-2 border-l-2 border-gold-400/30 rounded-tl-3xl" />
+            <div className="absolute -top-4 -left-4 w-24 h-24 border-t-2 border-l-2 border-gold-400/40 rounded-tl-3xl pointer-events-none" />
           </AnimatedDiv>
 
           {/* Content Side */}
@@ -106,7 +100,6 @@ export default function AboutSection() {
               </p>
             </AnimatedDiv>
 
-            {/* Values */}
             <AnimatedDiv delay={0.5} className="mt-10 grid grid-cols-2 gap-6">
               {[
                 {

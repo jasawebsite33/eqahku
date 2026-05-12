@@ -12,7 +12,6 @@ export default function PackagesSection() {
       id="paket"
       className="section-padding bg-gradient-to-b from-ivory-50 via-beige-50 to-ivory-50 relative overflow-hidden"
     >
-      {/* Subtle background arch */}
       <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[80vw] h-[80vh] rounded-t-full border border-beige-200/30 pointer-events-none" />
 
       <div className="container-wide relative">
@@ -28,7 +27,6 @@ export default function PackagesSection() {
           ))}
         </div>
 
-        {/* Bottom note */}
         <AnimatedDiv className="text-center mt-12" delay={0.4}>
           <p className="text-body-sm text-charcoal-400">
             * Harga dapat berubah sewaktu-waktu. Hubungi kami untuk info
@@ -59,23 +57,23 @@ function PackageCard({ pkg, index }) {
       >
         {/* Popular badge */}
         {pkg.popular && (
-          <div className="absolute top-0 left-0 right-0">
+          <div className="absolute top-0 left-0 right-0 z-10">
             <div className="bg-gradient-gold text-charcoal-900 text-caption font-semibold tracking-widest uppercase py-2.5 text-center">
               Paling Populer
             </div>
           </div>
         )}
 
-        <div className={`p-8 md:p-9 flex-1 flex flex-col ${pkg.popular ? 'pt-14' : ''}`}>
-          {/* Package name */}
-          <div className="mb-6">
-            <span
-              className={`text-caption uppercase tracking-[0.2em] font-medium ${
-                pkg.popular ? 'text-gold-400' : 'text-gold-600'
-              }`}
-            >
-              {pkg.subtitle}
-            </span>
+       <div className={`p-8 md:p-9 flex-1 flex flex-col ${pkg.popular ? 'pt-28' : ''}`}>
+  {/* Package name */}
+  <div className={`mb-6 ${pkg.popular ? 'mt-4' : ''}`}>
+  <span
+    className={`text-caption uppercase tracking-[0.2em] font-medium ${
+      pkg.popular ? 'text-gold-400' : 'text-gold-600'
+    }`}
+  >
+    {pkg.subtitle}
+  </span>
             <h3
               className={`font-serif text-heading-lg mt-2 ${
                 pkg.popular ? 'text-ivory-50' : 'text-charcoal-900'

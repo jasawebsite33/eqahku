@@ -1,65 +1,48 @@
 'use client'
 
-import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
+import Image from 'next/image'
 import Button from '@/components/ui/Button'
 import { BRAND } from '@/lib/constants'
 
-// Dynamic import untuk 3D (client only, no SSR)
 const Hero3D = dynamic(() => import('@/components/three/Hero3D'), {
   ssr: false,
-  loading: () => (
-    <div className="absolute inset-0 bg-gradient-hero" />
-  ),
+  loading: () => <div className="absolute inset-0 bg-gradient-hero" />,
 })
 
 export default function HeroSection() {
-  const sectionRef = useRef(null)
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start start', 'end start'],
-  })
-
-  const y = useTransform(scrollYProgress, [0, 1], [0, 150])
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
-
   return (
-    <section
-      ref={sectionRef}
-      className="relative min-h-screen flex items-center overflow-hidden"
-    >
+    <section className="relative min-h-screen flex items-center overflow-hidden pt-32 pb-24 lg:pt-28 lg:pb-32">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-hero noise-overlay" />
 
-      {/* Subtle arch pattern - inspired by reference */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* Subtle arch pattern */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
-          className="absolute top-[10%] left-[5%] w-[40vw] h-[60vh] rounded-t-full border border-beige-200/20"
-          style={{ background: 'linear-gradient(180deg, transparent 0%, rgba(242,236,223,0.15) 100%)' }}
+          className="absolute top-[15%] left-[5%] w-[40vw] h-[60vh] rounded-t-full border border-beige-200/20"
+          style={{
+            background:
+              'linear-gradient(180deg, transparent 0%, rgba(242,236,223,0.15) 100%)',
+          }}
         />
-        <div
-          className="absolute top-[15%] right-[10%] w-[25vw] h-[45vh] rounded-t-full border border-beige-200/10"
-        />
+        <div className="absolute top-[20%] right-[10%] w-[25vw] h-[45vh] rounded-t-full border border-beige-200/10" />
       </div>
 
-      {/* 3D Canvas - Right side on desktop */}
-      <motion.div
-        className="absolute inset-0 lg:left-[35%] lg:right-0"
-        style={{ y }}
-      >
+      {/* 3D Canvas */}
+      <div className="absolute inset-0 lg:left-[42%] lg:right-0 top-20 lg:top-0 opacity-30 lg:opacity-100">
         <Hero3D />
-      </motion.div>
+      </div>
+
+      {/* Subtle gradient mask di kiri agar text readable di mobile */}
+      <div className="absolute inset-0 lg:hidden bg-gradient-to-b from-ivory-50 via-ivory-50/85 to-ivory-50/40 pointer-events-none" />
 
       {/* Content Overlay */}
-      <motion.div
-        className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 lg:px-12 w-full"
-        style={{ opacity }}
-      >
-        <div className="max-w-2xl pt-24 md:pt-0">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-8 lg:px-12 w-full">
+        <div className="max-w-2xl">
           {/* Label */}
           <motion.div
-            className="flex items-center gap-3 mb-8"
+            className="flex items-center gap-3 mb-6 lg:mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
@@ -72,7 +55,7 @@ export default function HeroSection() {
 
           {/* Headline */}
           <motion.h1
-            className="font-serif text-display md:text-display-lg lg:text-display-xl text-charcoal-900 text-balance"
+            className="font-serif text-[2.75rem] sm:text-display md:text-display-lg lg:text-display-xl text-charcoal-900 text-balance leading-[1.05]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 1, ease: [0.22, 1, 0.36, 1] }}
@@ -87,7 +70,7 @@ export default function HeroSection() {
 
           {/* Subheadline */}
           <motion.p
-            className="mt-7 text-body-lg md:text-subheading text-charcoal-500 max-w-xl leading-relaxed font-light"
+            className="mt-6 lg:mt-7 text-body-lg md:text-subheading text-charcoal-500 max-w-xl leading-relaxed font-light"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
@@ -99,7 +82,7 @@ export default function HeroSection() {
 
           {/* CTAs */}
           <motion.div
-            className="mt-10 flex flex-wrap gap-4"
+            className="mt-8 lg:mt-10 flex flex-wrap gap-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
@@ -119,18 +102,30 @@ export default function HeroSection() {
 
           {/* Trust indicator */}
           <motion.div
-            className="mt-14 flex items-center gap-6"
-            initial={{ opacity: 0 }}
+  className="mt-12 lg:mt-16 flex items-center gap-6"
+  initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2, duration: 1 }}
           >
-            <div className="flex -space-x-2">
-              {[1, 2, 3, 4, 5].map((i) => (
+            <div className="flex -space-x-3">
+              {[
+                'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80&auto=format&fit=crop&crop=faces',
+                'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80&auto=format&fit=crop&crop=faces',
+                'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80&auto=format&fit=crop&crop=faces',
+                'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&q=80&auto=format&fit=crop&crop=faces',
+                'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80&auto=format&fit=crop&crop=faces',
+              ].map((src, i) => (
                 <div
                   key={i}
-                  className="w-9 h-9 rounded-full border-2 border-ivory-50 bg-beige-200 flex items-center justify-center text-caption text-charcoal-600 font-medium"
+                  className="relative w-10 h-10 rounded-full border-2 border-ivory-50 overflow-hidden shadow-soft"
                 >
-                  {String.fromCharCode(64 + i)}
+                  <Image
+                    src={src}
+                    alt={`Customer ${i + 1}`}
+                    fill
+                    className="object-cover"
+                    sizes="40px"
+                  />
                 </div>
               ))}
             </div>
@@ -140,11 +135,11 @@ export default function HeroSection() {
             </div>
           </motion.div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="hidden lg:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1 }}
@@ -152,10 +147,7 @@ export default function HeroSection() {
         <span className="text-caption text-charcoal-400 tracking-widest uppercase">
           Scroll
         </span>
-        <motion.div
-          className="w-5 h-8 rounded-full border border-charcoal-300 flex justify-center pt-1.5"
-          initial={{ opacity: 0.5 }}
-        >
+        <motion.div className="w-5 h-8 rounded-full border border-charcoal-300 flex justify-center pt-1.5">
           <motion.div
             className="w-1 h-2 bg-gold-500 rounded-full"
             animate={{ y: [0, 8, 0] }}

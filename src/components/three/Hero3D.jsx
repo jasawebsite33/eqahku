@@ -1,11 +1,9 @@
 'use client'
 
-import { Suspense, useRef } from 'react'
+import { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
-import { Environment, ContactShadows, Float } from '@react-three/drei'
 import Scene from './Scene'
 
-// Fallback saat Canvas loading
 function CanvasLoader() {
   return (
     <div className="absolute inset-0 flex items-center justify-center">
@@ -19,9 +17,10 @@ export default function Hero3D() {
     <div className="absolute inset-0 w-full h-full">
       <Suspense fallback={<CanvasLoader />}>
         <Canvas
+          shadows
           camera={{
-            position: [0, 0.5, 5],
-            fov: 40,
+            position: [0, 1.2, 7],   // ⬅️ Naikkan Y=1.2, mundur Z=7
+            fov: 32,                  // ⬅️ Sedikit lebih cinematic
             near: 0.1,
             far: 100,
           }}

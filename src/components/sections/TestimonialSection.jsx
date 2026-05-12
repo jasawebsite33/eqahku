@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
 import SectionHeading from '@/components/ui/SectionHeading'
 import AnimatedDiv from '@/components/ui/AnimatedDiv'
 import { TESTIMONIALS } from '@/lib/constants'
@@ -14,7 +15,6 @@ export default function TestimonialSection() {
       id="testimoni"
       className="section-padding bg-charcoal-950 relative overflow-hidden"
     >
-      {/* Background texture */}
       <div className="absolute inset-0 noise-overlay opacity-[0.02]" />
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-500/20 to-transparent" />
 
@@ -37,14 +37,25 @@ export default function TestimonialSection() {
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               className="text-center"
             >
-              {/* Quote */}
-              <div className="mb-8">
-                <span className="text-gold-500/50 font-serif text-[5rem] leading-none select-none">
-                  "
-                </span>
+              {/* Avatar */}
+              <div className="flex justify-center mb-8">
+                <div className="relative w-20 h-20 rounded-full overflow-hidden ring-2 ring-gold-500/30 ring-offset-4 ring-offset-charcoal-950">
+                  <Image
+                    src={TESTIMONIALS[active].avatar}
+                    alt={TESTIMONIALS[active].name}
+                    fill
+                    className="object-cover"
+                    sizes="80px"
+                  />
+                </div>
               </div>
 
-              <blockquote className="font-serif text-subheading md:text-heading-lg text-ivory-100 leading-relaxed -mt-12">
+              {/* Quote mark */}
+              <div className="text-gold-500/40 font-serif text-5xl leading-none select-none -mb-4">
+                "
+              </div>
+
+              <blockquote className="font-serif text-subheading md:text-heading-lg text-ivory-100 leading-relaxed">
                 {TESTIMONIALS[active].text}
               </blockquote>
 
@@ -88,7 +99,7 @@ export default function TestimonialSection() {
           </div>
         </div>
 
-        {/* Bottom testimonial cards - condensed */}
+        {/* Bottom testimonial cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-20">
           {TESTIMONIALS.map((testimonial, index) => (
             <AnimatedDiv key={index} delay={index * 0.1}>
@@ -101,11 +112,27 @@ export default function TestimonialSection() {
                 }`}
                 whileHover={{ y: -2 }}
               >
-                <p className="text-body-sm text-ivory-300 line-clamp-3 mb-3">
-                  "{testimonial.text.substring(0, 80)}..."
-                </p>
-                <p className="text-caption text-ivory-500 font-medium">
-                  — {testimonial.name}
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="relative w-10 h-10 rounded-full overflow-hidden ring-1 ring-charcoal-700">
+                    <Image
+                      src={testimonial.avatar}
+                      alt={testimonial.name}
+                      fill
+                      className="object-cover"
+                      sizes="40px"
+                    />
+                  </div>
+                  <div>
+                    <p className="text-body-sm text-ivory-200 font-medium leading-tight">
+                      {testimonial.name}
+                    </p>
+                    <p className="text-caption text-ivory-500">
+                      {testimonial.location}
+                    </p>
+                  </div>
+                </div>
+                <p className="text-body-sm text-ivory-400 line-clamp-3">
+                  "{testimonial.text}"
                 </p>
               </motion.button>
             </AnimatedDiv>

@@ -9,6 +9,15 @@ export const BRAND = {
   address: 'Jakarta, Indonesia',
 }
 
+export const IMAGES = {
+  about:
+    'https://images.unsplash.com/photo-1484557985045-edf25e08da73?w=1200&q=80&auto=format&fit=crop',
+  aboutSecondary:
+    'https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=800&q=80&auto=format&fit=crop',
+  pattern:
+    'https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=600&q=80',
+}
+
 export const NAV_LINKS = [
   { label: 'Tentang', href: '#tentang' },
   { label: 'Paket', href: '#paket' },
@@ -25,7 +34,8 @@ export const PACKAGES = [
     subtitle: 'Pilihan Berkah',
     price: '2.800.000',
     unit: 'ekor',
-    description: 'Paket aqiqah dengan kualitas terjamin untuk keluarga yang mengutamakan keberkahan.',
+    description:
+      'Paket aqiqah dengan kualitas terjamin untuk keluarga yang mengutamakan keberkahan.',
     features: [
       'Kambing/domba pilihan sehat & sesuai syarat',
       'Pemotongan sesuai syar\'i dengan sertifikat',
@@ -41,7 +51,8 @@ export const PACKAGES = [
     subtitle: 'Rekomendasi Terbaik',
     price: '4.200.000',
     unit: 'ekor',
-    description: 'Pengalaman aqiqah premium dengan menu pilihan dan layanan personal yang menyeluruh.',
+    description:
+      'Pengalaman aqiqah premium dengan menu pilihan dan layanan personal yang menyeluruh.',
     features: [
       'Kambing/domba premium pilihan terbaik',
       'Pemotongan sesuai syar\'i dengan sertifikat',
@@ -60,7 +71,8 @@ export const PACKAGES = [
     subtitle: 'Pengalaman Eksklusif',
     price: '6.500.000',
     unit: 'ekor',
-    description: 'Layanan aqiqah paling eksklusif dengan perhatian di setiap detail, dari awal hingga akhir.',
+    description:
+      'Layanan aqiqah paling eksklusif dengan perhatian di setiap detail, dari awal hingga akhir.',
     features: [
       'Kambing/domba super premium grade A',
       'Pemotongan syar\'i oleh ustadz bersertifikat',
@@ -81,27 +93,42 @@ export const PROCESS_STEPS = [
   {
     step: '01',
     title: 'Konsultasi',
-    description: 'Diskusikan kebutuhan aqiqah Anda bersama tim kami. Kami akan membantu memilihkan paket yang tepat.',
+    description:
+      'Diskusikan kebutuhan aqiqah Anda bersama tim kami. Kami akan membantu memilihkan paket yang tepat.',
+    image:
+      'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80&auto=format&fit=crop',
   },
   {
     step: '02',
     title: 'Pemilihan Hewan',
-    description: 'Kami pilihkan kambing/domba terbaik yang memenuhi syarat aqiqah. Anda bisa melihat via foto/video.',
+    description:
+      'Kami pilihkan kambing/domba terbaik yang memenuhi syarat aqiqah. Anda bisa melihat via foto/video.',
+    image:
+      'https://images.unsplash.com/photo-1484557985045-edf25e08da73?w=800&q=80&auto=format&fit=crop',
   },
   {
     step: '03',
     title: 'Pemotongan Syar\'i',
-    description: 'Proses pemotongan dilakukan sesuai syariat Islam oleh tenaga ahli yang berpengalaman.',
+    description:
+      'Proses pemotongan dilakukan sesuai syariat Islam oleh tenaga ahli yang berpengalaman.',
+    image:
+      'https://images.unsplash.com/photo-1564769625905-50e93615e769?w=800&q=80&auto=format&fit=crop',
   },
   {
     step: '04',
     title: 'Pengolahan',
-    description: 'Daging diolah oleh chef berpengalaman dengan standar higienis dan cita rasa premium.',
+    description:
+      'Daging diolah oleh chef berpengalaman dengan standar higienis dan cita rasa premium.',
+    image:
+      'https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&q=80&auto=format&fit=crop',
   },
   {
     step: '05',
     title: 'Pengemasan & Pengiriman',
-    description: 'Dikemas dalam box premium dan dikirimkan tepat waktu ke lokasi yang Anda tentukan.',
+    description:
+      'Dikemas dalam box premium dan dikirimkan tepat waktu ke lokasi yang Anda tentukan.',
+    image:
+      'https://images.unsplash.com/photo-1607344645866-009c320b63e0?w=800&q=80&auto=format&fit=crop',
   },
 ]
 
@@ -111,50 +138,64 @@ export const TESTIMONIALS = [
     location: 'Jakarta Selatan',
     text: 'Aqiqah anak pertama kami bersama Eqahku benar-benar berkesan. Prosesnya transparan, masakannya enak, dan kemasannya cantik sekali. Terasa personal dan penuh perhatian.',
     rating: 5,
+    avatar:
+      'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80&auto=format&fit=crop&crop=faces',
   },
   {
     name: 'Dina Rahmawati',
     location: 'Bandung',
     text: 'Saya sangat terkesan dengan profesionalisme Eqahku. Dari konsultasi awal sampai pengiriman, semuanya smooth. Video dokumentasinya juga sangat bagus, jadi kenangan indah.',
     rating: 5,
+    avatar:
+      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80&auto=format&fit=crop&crop=faces',
   },
   {
     name: 'Ahmad & Siti',
     location: 'Tangerang',
     text: 'Paket Emas-nya worth it banget. Porsi banyak, rasa premium, dan packaging-nya mewah. Tamu-tamu pada kagum. Jazakallah khair, Eqahku!',
     rating: 5,
+    avatar:
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80&auto=format&fit=crop&crop=faces',
   },
   {
     name: 'Rina Permata',
     location: 'Depok',
     text: 'Pertama kali pakai jasa aqiqah dan langsung puas. Tim Eqahku sangat responsif dan membantu. Hasil masakannya melebihi ekspektasi. Recommended!',
     rating: 5,
+    avatar:
+      'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80&auto=format&fit=crop&crop=faces',
   },
 ]
 
 export const FAQS = [
   {
     question: 'Berapa hari sebelumnya saya harus memesan?',
-    answer: 'Kami merekomendasikan pemesanan minimal 3-5 hari sebelum hari H untuk memastikan ketersediaan hewan terbaik dan persiapan yang optimal. Untuk paket Platinum, kami sarankan 7 hari sebelumnya.',
+    answer:
+      'Kami merekomendasikan pemesanan minimal 3-5 hari sebelum hari H untuk memastikan ketersediaan hewan terbaik dan persiapan yang optimal. Untuk paket Platinum, kami sarankan 7 hari sebelumnya.',
   },
   {
     question: 'Apakah proses pemotongannya benar-benar sesuai syariat?',
-    answer: 'Absolutely. Setiap pemotongan dilakukan oleh tenaga ahli yang bersertifikat, dengan menyebut nama anak yang diaqiqahi, menghadap kiblat, dan menggunakan pisau yang tajam sesuai sunnah. Kami juga menyertakan sertifikat aqiqah sebagai bukti.',
+    answer:
+      'Absolutely. Setiap pemotongan dilakukan oleh tenaga ahli yang bersertifikat, dengan menyebut nama anak yang diaqiqahi, menghadap kiblat, dan menggunakan pisau yang tajam sesuai sunnah. Kami juga menyertakan sertifikat aqiqah sebagai bukti.',
   },
   {
     question: 'Apakah saya bisa melihat proses pemotongannya?',
-    answer: 'Tentu saja. Kami menyediakan dokumentasi berupa foto dan video dari proses pemotongan. Untuk paket tertentu, Anda juga bisa hadir langsung atau kami sediakan live streaming.',
+    answer:
+      'Tentu saja. Kami menyediakan dokumentasi berupa foto dan video dari proses pemotongan. Untuk paket tertentu, Anda juga bisa hadir langsung atau kami sediakan live streaming.',
   },
   {
     question: 'Apakah bisa custom menu masakan?',
-    answer: 'Ya, untuk paket Emas dan Platinum, Anda bisa memilih menu masakan sesuai preferensi. Pilihan meliputi gulai, sate, tongseng, sop, kebuli, dan masih banyak lagi.',
+    answer:
+      'Ya, untuk paket Emas dan Platinum, Anda bisa memilih menu masakan sesuai preferensi. Pilihan meliputi gulai, sate, tongseng, sop, kebuli, dan masih banyak lagi.',
   },
   {
     question: 'Area pengiriman mencakup mana saja?',
-    answer: 'Untuk paket Perak dan Emas, gratis pengiriman area Jabodetabek. Paket Platinum mencakup pengiriman gratis se-Jawa. Untuk area lainnya, silakan konsultasi dengan tim kami.',
+    answer:
+      'Untuk paket Perak dan Emas, gratis pengiriman area Jabodetabek. Paket Platinum mencakup pengiriman gratis se-Jawa. Untuk area lainnya, silakan konsultasi dengan tim kami.',
   },
   {
     question: 'Bagaimana cara pembayaran?',
-    answer: 'Kami menerima transfer bank (BCA, Mandiri, BNI, BSI), e-wallet (GoPay, OVO, DANA), dan juga menyediakan opsi cicilan untuk paket tertentu. DP minimal 50% untuk konfirmasi pemesanan.',
+    answer:
+      'Kami menerima transfer bank (BCA, Mandiri, BNI, BSI), e-wallet (GoPay, OVO, DANA), dan juga menyediakan opsi cicilan untuk paket tertentu. DP minimal 50% untuk konfirmasi pemesanan.',
   },
 ]
